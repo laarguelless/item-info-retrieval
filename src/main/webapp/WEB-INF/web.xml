@@ -5,10 +5,10 @@
           http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
-    <display-name>A very basic shop cart</display-name>
+    <display-name>Item information retrieval App</display-name>
 
     <servlet>
-        <servlet-name>my-shop-cart</servlet-name>
+        <servlet-name>item-info-retrieval-app</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 
         <init-param>
