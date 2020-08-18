@@ -21,4 +21,8 @@ public class Item {
         this.startTime = startTime;
         this.stopTime = stopTime;
     }
+
+    public String id(){
+        return id;
+    }
 }

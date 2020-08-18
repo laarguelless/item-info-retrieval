@@ -6,16 +6,12 @@ import com.google.gson.GsonBuilder;
 
 import java.time.OffsetDateTime;
 
-public class Serializer {
+public class GsonFactory {
     private static final Gson GSON = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .registerTypeAdapter(OffsetDateTime.class, new DateTimeTypeAdapter())
             .setLenient()
             .create();
-
-    public static String toJson(Object obj) {
-        return GSON.toJson(obj);
-    }
 
     public static Gson gson(){ return GSON; }
 }
