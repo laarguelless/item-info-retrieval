@@ -1,0 +1,1 @@
+create table if not exists items_cache(request VARCHAR(250) primary key, response json not null );
