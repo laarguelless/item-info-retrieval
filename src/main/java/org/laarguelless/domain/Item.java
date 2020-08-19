@@ -25,4 +25,26 @@ public class Item {
     public String id(){
         return id;
     }
+
+    public String title() {
+        return title;
+    }
+
+    public String categoryId() {
+        return categoryId;
+    }
+
+    public BigInteger price() {
+        return price;
+    }
+
+    public OffsetDateTime startTime() {
+        return startTime;
+    }
+
+    public OffsetDateTime stopTime() {
+        return stopTime;
+    }
+
+
 }

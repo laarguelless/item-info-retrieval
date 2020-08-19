@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 
 import java.time.OffsetDateTime;
 
-public class GsonFactory {
+class GsonFactory {
     private static final Gson GSON = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .registerTypeAdapter(OffsetDateTime.class, new DateTimeTypeAdapter())
