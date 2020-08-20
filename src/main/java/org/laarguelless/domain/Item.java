@@ -1,5 +1,7 @@
 package org.laarguelless.domain;
 
+import lombok.Data;
+
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
 
@@ -8,12 +10,37 @@ public class Item {
     private final String id;
     private final String title;
     private final String categoryId;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public BigInteger getPrice() {
+        return price;
+    }
+
+    public OffsetDateTime getStartTime() {
+        return startTime;
+    }
+
+    public OffsetDateTime getStopTime() {
+        return stopTime;
+    }
+
     private final BigInteger price;
     private final OffsetDateTime startTime;
     private final OffsetDateTime stopTime;
 
-    public Item(String id, String title, String categoryId, BigInteger price,
-                OffsetDateTime startTime, OffsetDateTime stopTime) {
+    public Item(String id, String title, String categoryId, BigInteger price, OffsetDateTime startTime,
+                OffsetDateTime stopTime) {
         this.id = id;
         this.title = title;
         this.categoryId = categoryId;
@@ -21,30 +48,4 @@ public class Item {
         this.startTime = startTime;
         this.stopTime = stopTime;
     }
-
-    public String id(){
-        return id;
-    }
-
-    public String title() {
-        return title;
-    }
-
-    public String categoryId() {
-        return categoryId;
-    }
-
-    public BigInteger price() {
-        return price;
-    }
-
-    public OffsetDateTime startTime() {
-        return startTime;
-    }
-
-    public OffsetDateTime stopTime() {
-        return stopTime;
-    }
-
-
 }

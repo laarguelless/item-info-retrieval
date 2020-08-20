@@ -1,1 +1,7 @@
-create table if not exists items_cache(request VARCHAR(250) primary key, response VARCHAR(500) not null );
+create table if not exists items
+(id VARCHAR(250) primary key,
+  title VARCHAR(250),
+  categoryId VARCHAR(250),
+  startTime timestamp ,
+  stopTime timestamp
+);

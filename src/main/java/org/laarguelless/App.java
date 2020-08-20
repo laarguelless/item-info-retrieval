@@ -1,16 +1,14 @@
 package org.laarguelless;
 
+import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.laarguelless.db.JDBI;
-import org.laarguelless.db.JDBIClient;
+import org.laarguelless.db.JdbiClient;
 import org.laarguelless.domain.Item;
-import org.laarguelless.domain.ItemRepository;
-import org.laarguelless.json.Serializer;
-import org.laarguelless.json.SerializerImpl;
-import org.laarguelless.repository.ItemRepositoryImpl;
+import org.laarguelless.json.GsonProvider;
 import org.laarguelless.rest.ItemRestClient;
 import org.laarguelless.services.ItemService;
 
+import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
 
@@ -19,10 +17,12 @@ public class App extends ResourceConfig {
     private static final String ITEMS_URL = "https://api.mercadolibre.com/items/";
 
     public App(){
-        Serializer<Item> itemSerializer = new SerializerImpl<>(Item.class);
-        JDBIClient jdbiClient = new JDBIClient(JDBI.getInstance().jdbi(), itemSerializer::toJson);
-        ItemRestClient itemRestClient = new ItemRestClient(ClientBuilder.newClient(), ITEMS_URL, itemSerializer::fromJson);
-        ItemRepository itemRepository = new ItemRepositoryImpl(itemRestClient,jdbiClient);
-        registerInstances(new ItemService(itemRepository, itemSerializer::toJson));
+        registerInstances(new GsonProvider<Item>());
+        JdbiClient jdbiClient = JdbiClient.create();
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.register(GsonProvider.class);
+        Client client = ClientBuilder.newClient(clientConfig);
+        ItemRestClient itemRestClient = new ItemRestClient(client, ITEMS_URL);
+        registerInstances(new ItemService(itemRestClient,jdbiClient));
     }
 }
