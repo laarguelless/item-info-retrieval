@@ -1,10 +1,7 @@
 package org.laarguelless.json;
 
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
+
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -12,11 +9,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
-import javax.ws.rs.ext.Provider;
 import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-import java.time.OffsetDateTime;
 
 public class GsonProvider<T> implements MessageBodyReader<T>, MessageBodyWriter<T> {
 
@@ -29,13 +24,9 @@ public class GsonProvider<T> implements MessageBodyReader<T>, MessageBodyWriter<
     private UriInfo ui;
 
     public GsonProvider() {
-        GsonBuilder builder = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .registerTypeAdapter(OffsetDateTime.class, new DateTimeTypeAdapter())
-                .setLenient();
 
-        this.gson = builder.create();
-        this.prettyGson = builder.setPrettyPrinting().create();
+        this.gson = GsonBuilderFactory.GSON_BUILDER.create();
+        this.prettyGson = GsonBuilderFactory.GSON_BUILDER.setPrettyPrinting().create();
     }
 
     @Override

@@ -1,7 +1,2 @@
 create table if not exists items
-(id VARCHAR(250) primary key,
-  title VARCHAR(250),
-  categoryId VARCHAR(250),
-  startTime timestamp ,
-  stopTime timestamp
-);
+(request VARCHAR(250) primary key not null, response VARCHAR(500) not null);

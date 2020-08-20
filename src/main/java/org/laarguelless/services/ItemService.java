@@ -2,6 +2,7 @@ package org.laarguelless.services;
 
 import org.laarguelless.db.JdbiRepository;
 import org.laarguelless.domain.Item;
+import org.laarguelless.rest.EmptyResponse;
 import org.laarguelless.rest.RestRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +50,6 @@ public class ItemService {
     }
 
     private Response notFound(){
-        return Response.status(404).build();
+        return Response.ok(new EmptyResponse()).build();
     }
 }
