@@ -12,13 +12,10 @@ public class RestRepositoryImpl implements RestRepository{
 
     private final ItemRestClient itemRestClient;
     private final ChildrenRestClient childrenRestClient;
-    private final ItemDtoConverter itemConverter;
 
-    public RestRepositoryImpl(ItemRestClient itemRestClient, ChildrenRestClient childrenRestClient,
-                              ItemDtoConverter itemConverter) {
+    public RestRepositoryImpl(ItemRestClient itemRestClient, ChildrenRestClient childrenRestClient) {
         this.itemRestClient = itemRestClient;
         this.childrenRestClient = childrenRestClient;
-        this.itemConverter = itemConverter;
     }
 
     @Override
