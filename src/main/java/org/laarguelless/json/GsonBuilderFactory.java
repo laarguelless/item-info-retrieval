@@ -7,6 +7,8 @@ import org.laarguelless.db.dao.GsonAdaptersChildDao;
 import org.laarguelless.db.dao.GsonAdaptersItemDao;
 import org.laarguelless.rest.clients.dto.GsonAdaptersChildDto;
 import org.laarguelless.rest.clients.dto.GsonAdaptersItemDto;
+import org.laarguelless.rest.response.GsonAdaptersInfoRequestResponse;
+import org.laarguelless.rest.response.GsonAdaptersMetricsResponse;
 
 import java.time.OffsetDateTime;
 
@@ -21,6 +23,8 @@ public class GsonBuilderFactory {
                 .registerTypeAdapterFactory(new GsonAdaptersChildDto())
                 .registerTypeAdapterFactory(new GsonAdaptersItemDao())
                 .registerTypeAdapterFactory(new GsonAdaptersChildDao())
+                .registerTypeAdapterFactory(new GsonAdaptersInfoRequestResponse())
+                .registerTypeAdapterFactory(new GsonAdaptersMetricsResponse())
                 .setPrettyPrinting()
                 .setLenient();
 
