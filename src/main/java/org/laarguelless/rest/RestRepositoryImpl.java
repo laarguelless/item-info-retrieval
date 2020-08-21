@@ -26,6 +26,6 @@ public class RestRepositoryImpl implements RestRepository{
 
     private Item getChildren(String itemId, ItemDto itemDto){
         List<ChildDto> children = childrenRestClient.getById(itemId);
-        return itemDto.fromDto(children);
+        return itemDto.toDomain(children);
     }
 }

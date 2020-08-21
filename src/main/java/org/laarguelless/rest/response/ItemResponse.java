@@ -19,11 +19,19 @@ public abstract class ItemResponse {
     public abstract OffsetDateTime stopTime();
     public abstract List<ChildResponse> children();
 
-    public static ItemResponse fromDomain(Item item){
-        return ImmutableItemResponse.builder().build();
+    public static ItemResponse of(Item item){
+        return ImmutableItemResponse.builder()
+                .id(item.id())
+                .categoryId(item.categoryId())
+                .title(item.title())
+                .price(item.price())
+                .startTime(item.startTime())
+                .stopTime(item.stopTime())
+                .children(of(item.children()))
+                .build();
     }
 
-    private static List<ChildResponse> fromDomain(List<Child> children){
+    private static List<ChildResponse> of(List<Child> children){
         return children.map(child -> ImmutableChildResponse
                 .builder()
                 .itemId(child.itemId())

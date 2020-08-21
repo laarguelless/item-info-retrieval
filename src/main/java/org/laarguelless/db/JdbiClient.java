@@ -5,6 +5,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jdbi.v3.core.Jdbi;
 import org.laarguelless.db.dao.ItemDao;
 import org.laarguelless.db.dao.ResponseDao;
+import org.laarguelless.domain.Item;
 
 import java.util.Optional;
 
@@ -30,7 +31,7 @@ public class JdbiClient implements JdbiRepository{
         return gson.toJson(itemDao);
     }
 
-    public void save(org.laarguelless.domain.Item item){
+    public void save(Item item){
         jdbi.useHandle(handle -> {
             ItemDao dao = ItemDao.fromDomain(item);
             handle.createUpdate("insert into items (request,response) values(:request,:response)")
@@ -40,7 +41,7 @@ public class JdbiClient implements JdbiRepository{
         });
     }
 
-    public Optional<org.laarguelless.domain.Item> getById(String id){
+    public Optional<Item> getById(String id){
        return jdbi.withHandle(handle ->
           handle.createQuery("Select * from items where request= :request")
                    .bind("request",id)

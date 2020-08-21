@@ -4,7 +4,7 @@ import org.laarguelless.db.JdbiRepository;
 import org.laarguelless.domain.Item;
 import org.laarguelless.rest.response.EmptyResponse;
 import org.laarguelless.rest.RestRepository;
-import org.laarguelless.rest.response.ItemServiceException;
+import org.laarguelless.rest.response.ItemResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,13 +31,8 @@ public class ItemService {
     @Path("/{item_id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getItemId(@PathParam("item_id") String itemId) {
-        try{
-            return jdbiRepository.getById(itemId)
-                    .map(this::fromItem)
-                    .orElseGet(()->this.getItemFromService(itemId));
-        }catch (Exception e){
-            throw new ItemServiceException(500,e.getMessage());
-        }
+        return jdbiRepository.getById(itemId).map(this::fromItem).orElseGet(()->this.getItemFromService(itemId));
+
     }
 
     private Response getItemFromService(String itemId){
@@ -49,7 +44,7 @@ public class ItemService {
 
     private Response fromItem(Item item){
         return  Response
-                .ok(item)
+                .ok(ItemResponse.of(item))
                 .build();
     }
 

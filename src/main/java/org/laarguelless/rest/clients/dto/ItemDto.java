@@ -27,7 +27,7 @@ public abstract class ItemDto {
     @SerializedName("stop_time")
     public abstract OffsetDateTime stopTime();
 
-    public Item fromDto(List<ChildDto> children){
+    public Item toDomain(List<ChildDto> children){
         return ImmutableItem.builder()
                 .id(id())
                 .title(title())

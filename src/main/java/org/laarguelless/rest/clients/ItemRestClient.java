@@ -1,5 +1,6 @@
 package org.laarguelless.rest.clients;
 
+import com.google.gson.Gson;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.laarguelless.rest.clients.dto.ItemDto;
 
@@ -10,13 +11,17 @@ import java.util.Optional;
 
 public class ItemRestClient extends RestClient<Optional<ItemDto>> {
 
-    public ItemRestClient(@NonNull Client client, String baseUrl){
+    private final Gson gson;
+
+    public ItemRestClient(@NonNull Client client, String baseUrl, Gson gson){
         super(client,String.format("%s/{id}",baseUrl));
+        this.gson = gson;
     }
 
     @Override
     Optional<ItemDto> parseValueFromResponse(Response response) {
-        return Optional.ofNullable(response.readEntity(ItemDto.class));
+        String json = response.readEntity(String.class);
+        return Optional.ofNullable(gson.fromJson(json,ItemDto.class));
     }
 
     @Override

@@ -1,10 +1,8 @@
 package org.laarguelless.rest.clients;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import io.leangen.geantyref.TypeToken;
 import io.vavr.collection.List;
-import io.vavr.gson.VavrGson;
 import org.junit.jupiter.api.Test;
 import org.laarguelless.json.GsonBuilderFactory;
 import org.laarguelless.rest.clients.dto.ChildDto;
@@ -12,7 +10,6 @@ import org.laarguelless.rest.clients.dto.ImmutableChildDto;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.core.Response;
-
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 

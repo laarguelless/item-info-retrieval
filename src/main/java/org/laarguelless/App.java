@@ -33,7 +33,7 @@ public class App extends ResourceConfig {
         ClientConfig clientConfig = new ClientConfig();
         clientConfig.register(GsonProvider.class);
         Client client = ClientBuilder.newClient(clientConfig);
-        ItemRestClient itemRestClient = new ItemRestClient(client,BASE_URL);
+        ItemRestClient itemRestClient = new ItemRestClient(client,BASE_URL,GSON);
         ChildrenRestClient childrenRestClient = new ChildrenRestClient(client, BASE_URL,GSON);
         RestRepository restRepository = new RestRepositoryImpl(itemRestClient,childrenRestClient);
         registerInstances(new ItemService(restRepository,jdbiClient));

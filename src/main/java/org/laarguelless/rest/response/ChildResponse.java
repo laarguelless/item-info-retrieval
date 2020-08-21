@@ -11,11 +11,4 @@ public abstract class ChildResponse {
 
     public abstract String itemId();
     public abstract OffsetDateTime stopTime();
-
-    public ChildResponse fromDomain(Child child){
-        return ImmutableChildResponse.builder()
-                .itemId(child.itemId())
-                .stopTime(child.stopTime())
-                .build();
-    }
 }
