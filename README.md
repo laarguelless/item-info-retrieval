@@ -69,17 +69,17 @@ The following are the main components
 
 Component | Description
 ------------ | -------------
-db           | Hasdb implementaion details: Connections, daos and repository implementations
-domain       | Has the domain objects and repository interfaces
-json         | Has the gson/jersey implementation
-rest         | Has the clients, services and repository implementations
-App          | Is the main class for the app.It is responsible for initializing all the components
+**db**           | Hasdb implementaion details: Connections, daos and repository implementations
+**domain**       | Has the domain objects and repository interfaces
+**json**         | Has the gson/jersey implementation
+**rest**         | Has the clients, services and repository implementations
+**App**          | Is the main class for the app.It is responsible for initializing all the components
 
 ## TODOS
 
-[] Rise the test coverage up to 85% at least
-[] Add a retry mechanism in the rest package (Maybe using [failsafe](https://jodah.net/failsafe/)
-[] Implementing async calls in both **db** and **rest** components
-[] Add a little more sofisticated error handling layer
-[] Complete `/health` endpoint
+- [ ] Rise the test coverage up to 85% at least
+- [ ] Add a retry mechanism in the rest package (Maybe using [failsafe](https://jodah.net/failsafe/)
+- [ ] Implementing async calls in both **db** and **rest** components
+- [ ] Add a little more sofisticated error handling layer
+- [ ] Complete `/health` endpoint
 
