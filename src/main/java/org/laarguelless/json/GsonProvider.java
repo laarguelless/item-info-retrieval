@@ -18,15 +18,12 @@ public class GsonProvider<T> implements MessageBodyReader<T>, MessageBodyWriter<
     private static final String PRETTY_PRINT = "pretty-print";
 
     private final Gson gson;
-    private final Gson prettyGson;
 
     @Context
     private UriInfo ui;
 
     public GsonProvider() {
-
-        this.gson = GsonBuilderFactory.GSON_BUILDER.create();
-        this.prettyGson = GsonBuilderFactory.GSON_BUILDER.setPrettyPrinting().create();
+        this.gson = GsonBuilderFactory.GSON;
     }
 
     @Override
@@ -64,11 +61,7 @@ public class GsonProvider<T> implements MessageBodyReader<T>, MessageBodyWriter<
 
         try (PrintWriter printWriter = new PrintWriter(entityStream)) {
             String json;
-            if (ui.getQueryParameters().containsKey(PRETTY_PRINT)) {
-                json = prettyGson.toJson(t);
-            } else {
-                json = gson.toJson(t);
-            }
+            json = gson.toJson(t);
             printWriter.write(json);
             printWriter.flush();
         }

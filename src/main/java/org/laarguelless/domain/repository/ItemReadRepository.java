@@ -1,4 +1,6 @@
-package org.laarguelless.domain;
+package org.laarguelless.domain.repository;
+
+import org.laarguelless.domain.Item;
 
 import java.util.Optional;
 

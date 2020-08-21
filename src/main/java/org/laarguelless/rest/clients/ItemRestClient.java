@@ -1,7 +1,7 @@
 package org.laarguelless.rest.clients;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.laarguelless.rest.dto.ItemDto;
+import org.laarguelless.rest.clients.dto.ItemDto;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.core.Response;

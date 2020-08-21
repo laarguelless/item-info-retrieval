@@ -4,8 +4,8 @@ import io.vavr.collection.List;
 import org.laarguelless.domain.Item;
 import org.laarguelless.rest.clients.ChildrenRestClient;
 import org.laarguelless.rest.clients.ItemRestClient;
-import org.laarguelless.rest.dto.ChildDto;
-import org.laarguelless.rest.dto.ItemDto;
+import org.laarguelless.rest.clients.dto.ChildDto;
+import org.laarguelless.rest.clients.dto.ItemDto;
 import java.util.Optional;
 
 public class RestRepositoryImpl implements RestRepository{
@@ -29,6 +29,6 @@ public class RestRepositoryImpl implements RestRepository{
 
     private Item getChildren(String itemId, ItemDto itemDto){
         List<ChildDto> children = childrenRestClient.getById(itemId);
-        return itemConverter.fromDto(itemDto,children);
+        return itemDto.fromDto(children);
     }
 }
