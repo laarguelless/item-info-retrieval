@@ -12,10 +12,10 @@ class JdbiFactory {
 
     private JdbiFactory(){
         HikariConfig config = new HikariConfig();
-        config.setDriverClassName("org.postgresql.Driver");
-        config.setJdbcUrl("jdbc:postgresql://postgres-docker:5432/db");
-        config.setUsername("docker");
-        config.setPassword("docker");
+        config.setDriverClassName(System.getenv("DB_DRIVER"));
+        config.setJdbcUrl(System.getenv("DB_URL"));
+        config.setUsername(System.getenv("DB_USER"));
+        config.setPassword(System.getenv("DB_PASSWORD"));
         HikariDataSource ds = new HikariDataSource(config);
         jdbi = Jdbi.create(ds);
         jdbi.installPlugin(new SqlObjectPlugin());
