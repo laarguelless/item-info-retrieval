@@ -58,20 +58,7 @@ class JdbiClientTest {
                         )
                 )
                 .build();
-        String expected = "{\n" +
-                "  \"id\": \"MLU460998489\",\n" +
-                "  \"title\": \"Google Pixel 32gb Silver - Impecable!\",\n" +
-                "  \"category_id\": \"MLU1055\",\n" +
-                "  \"price\": 350,\n" +
-                "  \"start_time\": \"2019-03-02T20:31:02Z\",\n" +
-                "  \"stop_time\": \"2019-10-25T23:28:35Z\",\n" +
-                "  \"children\": [\n" +
-                "    {\n" +
-                "      \"itemId\": \"MLU468887129\",\n" +
-                "      \"stop_time\": \"2020-04-25T22:10:52Z\"\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
+        String expected = "{\"id\":\"MLU460998489\",\"title\":\"Google Pixel 32gb Silver - Impecable!\",\"category_id\":\"MLU1055\",\"price\":350,\"start_time\":\"2019-03-02T20:31:02Z\",\"stop_time\":\"2019-10-25T23:28:35Z\",\"children\":[{\"itemId\":\"MLU468887129\",\"stop_time\":\"2020-04-25T22:10:52Z\"}]}";
         Jdbi jdbi = mock(Jdbi.class);
         assertEquals(expected, new JdbiClient(jdbi, GsonBuilderFactory.GSON).serialize(dao));
     }

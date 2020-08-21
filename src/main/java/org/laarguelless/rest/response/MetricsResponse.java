@@ -13,7 +13,7 @@ public interface MetricsResponse {
     OffsetDateTime date();
     @SerializedName("avg_response_time")
     long avgResponseTime();
-    @SerializedName("total_reqeusts")
+    @SerializedName("total_requests")
     long totalRequest();
     @SerializedName("info_request")
     List<InfoRequestResponse> infoRequests();

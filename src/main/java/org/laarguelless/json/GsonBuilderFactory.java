@@ -25,7 +25,6 @@ public class GsonBuilderFactory {
                 .registerTypeAdapterFactory(new GsonAdaptersChildDao())
                 .registerTypeAdapterFactory(new GsonAdaptersInfoRequestResponse())
                 .registerTypeAdapterFactory(new GsonAdaptersMetricsResponse())
-                .setPrettyPrinting()
                 .setLenient();
 
         VavrGson.registerAll(gsonBuilder);
